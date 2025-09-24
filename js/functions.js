@@ -32,18 +32,31 @@ const checkLength = (text, maxLength) => {
 };
 
 /**
- * Выводит сообщение об ошибке на 5 секунд
+ * Выводит сообщение об ошибке
  *
- * @param {string} text - Текст ошибки
+ * @param {string} errorText - Текст ошибки
+ * @param {number} duration - Время в миллисекундах, после которого уведомление скрывается
+ *
+ * @return {Function} Функция, скрывающая уведомление об ошибке
  */
-const showError = (errorText) => {
+const showError = (errorText, duration = 5000) => {
   const errorContainer = document.createElement('div');
   errorContainer.classList.add('error-notice');
   errorContainer.textContent = errorText;
   document.body.append(errorContainer);
-  setTimeout(() => {
-    errorContainer.remove();
-  }, 5000);
+
+  const removeError = () => {
+    if (errorContainer.parentNode) {
+      errorContainer.parentNode.removeChild(errorContainer);
+    }
+  };
+
+  const timeoutId = setTimeout(removeError, duration);
+
+  return () => {
+    clearTimeout(timeoutId);
+    removeError();
+  };
 };
 
 /**

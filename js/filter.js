@@ -22,11 +22,15 @@ const clearFilterButtonClass = () => {
   });
 };
 
-const viewDefaultPhotos = (photos) => {
+const resetFilters = (photos) => {
   clearFilterButtonClass();
   filterDefaultButton.classList.add('img-filters__button--active');
   clearThumbs();
   generateThumbs(photos);
+};
+
+const viewDefaultPhotos = (photos) => {
+  resetFilters(photos);
 };
 
 const viewRandomPhotos = (photos) => {
@@ -56,5 +60,6 @@ const onFilterButtonsClick = (photos) => (evt) => {
 };
 
 export {
-  onFilterButtonsClick
+  onFilterButtonsClick,
+  resetFilters
 };
