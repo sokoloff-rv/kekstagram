@@ -90,4 +90,4 @@ DATA_SOURCE=local
 
 ## Техническое задание
 
-[Посмотреть техническое задание проекта](https://sokoloff-rv.notion.site/Kekstagram-bf107f4aa6ec46499198a6bb0803af1f?pvs=4)
+[Посмотреть техническое задание проекта](tz.md)
